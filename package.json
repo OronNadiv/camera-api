@@ -15,11 +15,11 @@
   },
   "scripts": {
     "babel": "rm -rf ./lib && mkdir ./lib && babel -L -D src/ --out-dir lib/",
-    "cover": "istanbul cover _mocha -- --recursive -t 10000",
+    "cover": "istanbul cover _mocha -- --require babel-core/register --recursive -t 10000",
     "lint": "eslint src test",
     "start": "if [ \"$NODE_ENV\" = production ]; then node lib/app.js; else babel-node lib/app.js; fi",
-    "test": "mocha --recursive -t 10000 && npm run lint",
-    "test-coveralls": "istanbul cover _mocha --report lcovonly -- --recursive -t 10000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test": "mocha --require babel-core/register --recursive -t 10000 && npm run lint",
+    "test-coveralls": "istanbul cover _mocha --report lcovonly -- --require babel-core/register --recursive -t 10000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "postinstall": "npm run babel"
   },
   "dependencies": {
@@ -29,12 +29,12 @@
     "body-parser": "^1",
     "cookie-parser": "^1",
     "cors": "^2",
+    "debug": "^2",
     "diehard": "^1",
     "express": ">=4.5 <5",
     "jsonwebtoken": "^7",
     "redis": "^2",
-    "socket.io-emitter": "^1",
-    "winston": "^2"
+    "socket.io-emitter": "^1"
   },
   "devDependencies": {
     "chance": "^1",
