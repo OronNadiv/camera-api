@@ -1,7 +1,9 @@
-# Home Automation - Camera Backend API
-This backend server allows you to control the cameras from remote.
-The server receives request from the user to take photos.
-The user can take one photo from each camera or continuously for specific time period.
+# Home Automation - Camera API
+Back-end server that handles the camera apis. Main functions are:
+* It provides a list of all taken photos.
+* It accepts requests from the user to take photos.
+* It accepts requests from the alarm system api to take photos when motion is detected or garage door was opened while armed.
+* It sends push notification to the [raspberry pi camera clients][camera-client-url] asking to take photo(s).
 
 [![JavaScript Style Guide][standard-image]][standard-url]
 [![Dependencies][dependencies-image]][dependencies-url]
@@ -43,6 +45,8 @@ __UI\_URL__ (required): url to the [UI][ui-url] server. Default: if NODE_ENV = `
 [client-installation-instruction-url]: https://oronnadiv.github.io/home-automation/#installation-instructions-for-the-raspberry-pi-clients
 [server-installation-instruction-url]: https://oronnadiv.github.io/home-automation/#installation-instructions-for-the-server-micro-services
 [private-public-keys-url]: https://oronnadiv.github.io/home-automation/#generating-private-and-public-keys
+
+[camera-client-url]: https://github.com/OronNadiv/camera-raspberry-client
 
 [alarm-url]: https://github.com/OronNadiv/alarm-api
 [auth-url]: https://github.com/OronNadiv/authentication-api
