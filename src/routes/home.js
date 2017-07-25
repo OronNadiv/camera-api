@@ -1,10 +1,10 @@
-const verbose = require('debug')('ha:routes:home:verbose')
-
 import {createClient} from 'redis'
 import {Router} from 'express'
 import config from '../config'
 import emitter from 'socket.io-emitter'
 import Promise from 'bluebird'
+
+const verbose = require('debug')('ha:routes:home:verbose')
 
 const router = new Router()
 

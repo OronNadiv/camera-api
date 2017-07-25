@@ -1,9 +1,9 @@
-const error = require('debug')('ha:app:error')
-
 import diehard from 'diehard'
 import domain from 'domain'
 import expressInitializer from './initializations/express'
 import Promise from 'bluebird'
+
+const error = require('debug')('ha:app:error')
 
 const d = domain.create()
 

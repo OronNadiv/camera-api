@@ -1,7 +1,3 @@
-const verbose = require('debug')('ha:initializations:express:verbose')
-const info = require('debug')('ha:initializations:express:info')
-const error = require('debug')('ha:initializations:express:error')
-
 import authToken from './../middleware/auth_token'
 import bodyParser from 'body-parser'
 import config from './../config'
@@ -14,6 +10,10 @@ import ping from './../middleware/ping'
 import Promise from 'bluebird'
 import redirectToHttps from './../middleware/redirect_to_https'
 import xHeaders from './../middleware/x_headers'
+
+const verbose = require('debug')('ha:initializations:express:verbose')
+const info = require('debug')('ha:initializations:express:info')
+const error = require('debug')('ha:initializations:express:error')
 
 const app = express()
 
