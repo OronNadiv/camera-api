@@ -24,7 +24,8 @@ router.post('/take', (req, res) => {
         system: 'CAMERAS',
         type: 'TAKE_PHOTO',
         payload: params,
-        token: options.by.token
+        token: options.by.token,
+        uuid: 'camera-api'
       }),
       publish({
         groupId: options.by.group_id,
@@ -32,7 +33,8 @@ router.post('/take', (req, res) => {
         system: 'CAMERAS',
         type: 'TAKE_PHOTO',
         payload: params,
-        token: options.by.token
+        token: options.by.token,
+        uuid: 'camera-api'
       })
     ])
     .then(res.sendStatus.bind(res, 204))
