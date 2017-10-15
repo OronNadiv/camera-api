@@ -21,7 +21,6 @@ Click [here][server-installation-instruction-url] and follow the installation in
 __AUTH\_PUBLIC\_KEY__ (required): content of auth server's publickey.  
 __NODE\_ENV__ (required): set up the running environment.  Default: `production`.  `production` will enforce encryption using SSL and other security mechanisms.  
 __PORT__ (required): server's port.  default: `3007`  
-__REDIS\_URL__ / __REDISCLOUD\_URL__ (required): redis url.  Default: if NODE_ENV = `production` => `none`, otherwise: `redis://localhost:6379`  
 __UI\_URL__ (required): url to the [UI][ui-url] server. Default: if NODE_ENV = `production` => `none`, otherwise: `http://localhost:3000`
 
 ### License
