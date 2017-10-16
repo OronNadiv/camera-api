@@ -19,8 +19,10 @@ Click [here][server-installation-instruction-url] and follow the installation in
 
 ## Environment variables (configuration)
 __AUTH\_PUBLIC\_KEY__ (required): content of auth server's publickey.  
+__LOGIN\_URL__ (required): url to the [authentication][auth-url] server. Default: if NODE_ENV = `production` => `none`, otherwise: `http://localhost:3001`  
 __NODE\_ENV__ (required): set up the running environment.  Default: `production`.  `production` will enforce encryption using SSL and other security mechanisms.  
 __PORT__ (required): server's port.  default: `3007`  
+__PRIVATE\_KEY__ (required): Generated private key.  Public key should be shared with the [authentication][auth-url] server. See [here][private-public-keys-url].  
 __UI\_URL__ (required): url to the [UI][ui-url] server. Default: if NODE_ENV = `production` => `none`, otherwise: `http://localhost:3000`
 
 ### License
