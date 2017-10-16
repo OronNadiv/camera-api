@@ -2,10 +2,12 @@ import { Router } from 'express'
 import Promise from 'bluebird'
 import config from '../config'
 import JWTGenerator from 'jwt-generator'
+import DebugLib from 'debug'
 
 const {publish} = require('home-automation-pubnub').Publisher
 
-const verbose = require('debug')('ha:routes:home:verbose')
+const verbose = DebugLib('ha:routes:home:verbose')
+const error = DebugLib('ha:routes:home:error')
 
 const router = new Router()
 
@@ -13,7 +15,7 @@ const jwtGenerator = new JWTGenerator({
   loginUrl: config.loginUrl,
   privateKey: config.privateKey,
   useRetry: false,
-  issuer: 'urn:home-automation/garage'
+  issuer: 'urn:home-automation/camera'
 })
 
 router.post('/take', (req, res) => {
@@ -28,8 +30,8 @@ router.post('/take', (req, res) => {
   return Promise
     .resolve(jwtGenerator.makeToken({
       subject: `Requesting camera to take photo. ${options.by.group_id}`,
-      audience: 'urn:home-automation/camera',
-      payload: options.by
+      audience: 'urn:home-automation/*',
+      payload: {id: options.by.id, group_id: options.by.group_id}
     }))
     .then((token) => {
       return Promise.all([
@@ -55,6 +57,10 @@ router.post('/take', (req, res) => {
     })
     .then(() => {
       return res.sendStatus(204)
+    })
+    .catch((err) => {
+      error('Error while trying to publish "take photo" event.  Returning 500.', 'err:', err)
+      return res.sendStatus(500)
     })
 })
 
