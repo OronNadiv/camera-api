@@ -27,11 +27,12 @@ router.post('/take', (req, res) => {
 
   verbose('sending message to client. group_id:', options.by.group_id)
 
+  const {id, group_id} = options.by
   return Promise
     .resolve(jwtGenerator.makeToken({
       subject: `Requesting camera to take photo. ${options.by.group_id}`,
       audience: 'urn:home-automation/*',
-      payload: {id: options.by.id, group_id: options.by.group_id}
+      payload: {id, group_id}
     }))
     .then((token) => {
       return Promise.all([
