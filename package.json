@@ -10,8 +10,8 @@
   },
   "license": "AGPL-3.0",
   "engines": {
-    "node": "^6",
-    "npm": "^3"
+    "node": "^8",
+    "npm": "^5"
   },
   "scripts": {
     "babel": "rm -rf ./lib && mkdir ./lib && babel -L -D src/ --out-dir lib/",
@@ -33,11 +33,11 @@
     "diehard": "^1.5.2",
     "express": "^4.5",
     "home-automation-pubnub": "^0.4.5",
-    "jsonwebtoken": "^8.0.1",
-    "jwt-generator": "^3.0.0"
+    "jsonwebtoken": "^8.1.0",
+    "jwt-generator": "^3.0.1"
   },
   "devDependencies": {
-    "chance": "^1",
+    "chance": "^1.0.11",
     "coveralls": "^3.0.0",
     "eslint": "^4",
     "eslint-config-standard": "^10.2.1",
