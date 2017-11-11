@@ -13,6 +13,25 @@ if (!config.authPublicKey) {
   process.exit(1)
 }
 
+config.aws = {
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+}
+
+if (!config.aws.accessKeyId) {
+  error(
+    'AWS access key id could not be found in the environment variable.  Please set \'AWS_ACCESS_KEY_ID\'.'
+  )
+  process.exit(1)
+}
+
+if (!config.aws.secretAccessKey) {
+  error(
+    'AWS secret access key could not be found in the environment variable.  Please set \'AWS_SECRET_ACCESS_KEY\'.'
+  )
+  process.exit(1)
+}
+
 config.loginUrl = process.env.LOGIN_URL || (config.production ? null : 'http://localhost:3001')
 if (!config.loginUrl) {
   error(
@@ -23,6 +42,13 @@ if (!config.loginUrl) {
 
 config.port = process.env.PORT || 3007
 
+config.postgres = process.env.DATABASE_URL || 'postgres://postgres:@localhost/home_automation'
+config.postgresPool = {
+  min: parseInt(process.env.POSTGRESPOOLMIN || 2, 10),
+  max: parseInt(process.env.POSTGRESPOOLMAX || 10, 10),
+  log: process.env.POSTGRESPOOLLOG === 'true',
+  afterCreate: (connection, cb) => connection.query(`SET SESSION SCHEMA 'camera';`, cb)
+}
 config.privateKey = process.env.PRIVATE_KEY || (config.production ? null : fs.readFileSync(path.join(__dirname, '../test/keys/private_key.pem')))
 if (!config.privateKey) {
   error(

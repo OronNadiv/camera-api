@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import config from '../config'
 
-const info = require('debug')('ha:initializations:auth_token:info')
+const info = require('debug')('ha:middleware:auth_token:info')
 
 export default (req, res, next) => {
   function sendUnauthenticated () {
@@ -31,8 +31,10 @@ export default (req, res, next) => {
 
     // token is valid
 
+    const decoded = jwt.decode(token)
     req.client = payload
     req.client.token = token
+    req.client.decoded = decoded
     return next()
   })
 }

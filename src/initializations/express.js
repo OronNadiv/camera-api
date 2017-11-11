@@ -6,6 +6,7 @@ import cors from 'cors'
 import diehard from 'diehard'
 import express from 'express'
 import home from './../routes/home'
+import files from './../routes/files'
 import ping from './../middleware/ping'
 import Promise from 'bluebird'
 import redirectToHttps from './../middleware/redirect_to_https'
@@ -34,6 +35,7 @@ export default {
     app.use(authToken)
 
     app.use(home)
+    app.use(files)
 
     app.use((err, req, res) => {
       if (!(err instanceof Error)) {
