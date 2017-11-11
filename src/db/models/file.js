@@ -30,8 +30,8 @@ export default bookshelf.Model.extend({
 
   initialize () {
     this.on('creating', model => {
-      const bucket = 'nadiv-home-automation'
-      const key = `${model.get('group_id')}_${uuid.v4().replace(/-/g)}_${model.get('name')}`
+      const bucket = config.aws.bucketName
+      const key = `${model.get('group_id')}_${model.get('name')}_${uuid.v4().replace(/-/g, '')}`
 
       // Documentation: http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
       return s3.uploadAsync({

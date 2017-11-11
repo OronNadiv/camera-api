@@ -21,6 +21,7 @@ Click [here][server-installation-instruction-url] and follow the installation in
 ## Environment variables (configuration)
 __AUTH\_PUBLIC\_KEY__ (required): content of auth server's publickey.  
 __AWS\_ACCESS\_KEY\_ID__ (required): [AWS][aws-url] S3 credentials to store images taken by the cameras.  
+__AWS\_BUCKET\_NAME__ (required): [AWS][aws-url] S3 bucket name to store the images.  
 __AWS\_SECRET\_ACCESS\_KEY__ (required): [AWS][aws-url] S3 credentials to store images taken by the cameras.  
 __DATABASE\_URL__ (required):  url to postgres database.  Default: `postgres://postgres:@localhost/home_automation`  
 __LOGIN\_URL__ (required): url to the [authentication][auth-url] server. Default: if NODE_ENV = `production` => `none`, otherwise: `http://localhost:3001`  

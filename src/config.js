@@ -15,7 +15,8 @@ if (!config.authPublicKey) {
 
 config.aws = {
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  bucketName: process.env.AWS_BUCKET_NAME
 }
 
 if (!config.aws.accessKeyId) {
@@ -28,6 +29,13 @@ if (!config.aws.accessKeyId) {
 if (!config.aws.secretAccessKey) {
   error(
     'AWS secret access key could not be found in the environment variable.  Please set \'AWS_SECRET_ACCESS_KEY\'.'
+  )
+  process.exit(1)
+}
+
+if (!config.aws.bucketName) {
+  error(
+    'AWS bucket name could not be found in the environment variable.  Please set \'AWS_BUCKET_NAME\'.'
   )
   process.exit(1)
 }
