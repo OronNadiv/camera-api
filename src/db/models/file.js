@@ -62,7 +62,7 @@ export default bookshelf.Model.extend({
           return publish({
             groupId: options.by.group_id,
             isTrusted: true,
-            system: 'CAMERA',
+            system: 'CAMERAS',
             type: 'FILE_CREATED',
             payload: model.toJSON(),
             token,
