@@ -37,6 +37,7 @@ export default bookshelf.Model.extend({
       return s3.uploadAsync({
         Bucket: bucket,
         Key: key,
+        ServerSideEncryption: 'AES256',
         Body: model.get('read_stream')
       })
         .then(() => {
