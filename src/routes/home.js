@@ -27,7 +27,7 @@ router.post('/take', (req, res) => {
 
   verbose('sending message to client. group_id:', options.by.group_id)
 
-  const {id, group_id} = options.by
+  const {id, group_id} = options.by // eslint-disable-line camelcase
   return Promise
     .resolve(jwtGenerator.makeToken({
       subject: `Requesting camera to take photo. ${options.by.group_id}`,

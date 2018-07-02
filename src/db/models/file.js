@@ -49,7 +49,7 @@ export default bookshelf.Model.extend({
     this.on('created', (model, attrs, options) => {
       verbose('sending message to client. group_id:', options.by.group_id)
 
-      const {id, group_id} = options.by
+      const {id, group_id} = options.by // eslint-disable-line camelcase
       return Promise
         .all([
           jwtGenerator.makeToken({
